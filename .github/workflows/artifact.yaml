@@ -13,4 +13,9 @@ jobs:
             echo "This is GENERATING ARTIFACTS" >> file.txt
         - name: Opening Artifacts
           run: cat file.txt
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Opening Artifacts from test
+        run: cat file.txt
   
