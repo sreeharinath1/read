@@ -1,0 +1,22 @@
+name: java setup
+
+on:
+  workflow_dispatch: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  java-setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Checking Java-version
+        run: java --version
