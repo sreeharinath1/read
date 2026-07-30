@@ -1,0 +1,11 @@
+name: My first workflow
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  print:
+     runs-on: ubuntu-latest
+     - name: Just Print Hello
+       run: echo "Hello, Iam learning Github Actions"
