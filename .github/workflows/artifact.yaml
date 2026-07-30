@@ -1,0 +1,16 @@
+name: artifacts upload and download
+
+on:
+  workflow_dispatch:
+jobs:
+  build:
+     runs-on: ubuntu-latest
+     steps:
+        - name: Checkout Code
+          uses: actions/checkout@v4
+        - name: Generating artifacts
+          run: |
+            echo "This is GENERATING ARTIFACTS" >> file.txt
+        - name: Opening Artifacts
+          run: cat file.txt
+  
