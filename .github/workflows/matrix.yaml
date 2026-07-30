@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest,windows-lates,macos-latest ]
-        node-versions: [ 16, 18, 20 ]
+        node-version: [ 16, 18, 20 ]
     runs-on: ${{matrix.os}}
     steps:
       - name: code checkout
@@ -14,6 +14,6 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-versions: ${{ matrix.node-versions }}
+          node-version: ${{ matrix.node-versions }}
       - name: Tessting correct installation
         run: npm -v
