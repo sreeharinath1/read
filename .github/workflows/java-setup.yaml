@@ -19,3 +19,17 @@ jobs:
           java-version: '17'
       - name: Checking Java-version
         run: java --version
+  multiple-java:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: [11, 17, 21]
+    steps:
+      - name: Install Java -versions
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java-version }}
+      - name: Checking Installed Jversions
+        run: java --version
+        
