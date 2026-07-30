@@ -1,0 +1,19 @@
+name: dynamic
+on:
+  workflow_dispatch:
+jobs:
+  gen-matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - id: set-matrix
+        run: |
+          echo 'matrix={"include":[{"env":"dev"},{"env","staging"}]}'
+    outputs:
+      matrix: ${{steps.set-matrix.outputs.matrix }}
+  deploy:
+    needs: gen-matrix
+    strategy:
+      matrix: ${{ fromJson(needs.gen-matrix.outputs.matrix) }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying to ${{matrix.env}}"
