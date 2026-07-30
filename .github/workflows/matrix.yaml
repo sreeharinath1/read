@@ -1,0 +1,19 @@
+name: Matric Strategy
+on:
+  workflow_dispatch:
+jobs:
+  matrix_test:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest,windows-lates,macos-latest ]
+        node-versions: [ 16, 18, 20 ]
+    runs-on: ${{matix.os}}
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-versions: ${{ matrix.node-versions }}
+      - name: Tessting correct installation
+        run: npm -v
