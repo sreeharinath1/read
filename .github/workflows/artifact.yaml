@@ -13,10 +13,25 @@ jobs:
             echo "This is GENERATING ARTIFACTS" >> file.txt
         - name: Opening Artifacts
           run: cat file.txt
+        - name: upload artifacts
+          uses: actions/upload-artifacts@v4
+          with:
+            name: artifile
+            path: /docs
+            retention-days: 30
+            if-no-files-found: error
+            overwrite: false
+            compression-level: 6
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: downloading artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: artifile
+          path: /docs
       - name: Opening Artifacts from test
         run: cat file.txt
+      
   
