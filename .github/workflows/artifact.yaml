@@ -30,8 +30,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: artifile
-          path: .
+          path: /docs/
       - name: Opening Artifacts from test
-        run: cat file.txt
+        run: cat /docs/file.txt
       
   
