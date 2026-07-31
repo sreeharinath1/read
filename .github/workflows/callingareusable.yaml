@@ -1,0 +1,16 @@
+name: caller
+on:
+  workflow_dispatch:
+
+jobs:
+  call-build:
+    uses: .github/workflows/reusable_build.yaml@main
+    with:
+      java-version: '21'
+      environment: staging
+  post-build:
+    needs: call-build
+    runs-on: ubuntu-latest
+    steps:
+      - run: java --version
+    
