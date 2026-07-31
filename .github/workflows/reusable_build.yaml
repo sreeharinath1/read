@@ -1,0 +1,30 @@
+name: Reusable workflow build
+on:
+  workflow_call:
+    inputs:
+      java-version:
+        required: false
+        type: string
+        default: '17'
+      environment:
+        required: true
+        type: string
+    outputs:
+      artifact_name:
+        description: "Name of the Upload Artifact"
+        value: ${{ jobs.build.outputs.artifact_name}}
+    secrets:
+      DEPLOY_TOKEN:
+        required: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Intalling Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: java --version
