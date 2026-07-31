@@ -26,5 +26,5 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: ${{ github.event.inputs.java-version}}
       - run: java --version
