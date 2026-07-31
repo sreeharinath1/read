@@ -8,4 +8,4 @@ jobs:
     steps:
       - name: Checkout code
       - name: Deploying Code to env
-        run: Deploying
+        run: echo "Deploying"
