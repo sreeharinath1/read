@@ -4,7 +4,7 @@ on:
 
 jobs:
   call-build:
-    uses: .github/workflows/reusable_build.yaml@main
+    uses: sreeharinath1/read/.github/workflows/reusable_build.yaml@main
     with:
       java-version: '21'
       environment: staging
