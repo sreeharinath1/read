@@ -1,11 +1,14 @@
 name: env approval
 on:
   workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: production
     steps:
       - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Deploying Code to env
         run: echo "Deploying"
